@@ -1,18 +1,6 @@
 import type { Config } from 'tailwindcss';
 import type { DefaultColors } from 'tailwindcss/types/generated/colors';
 
-const themeDark = (colors: DefaultColors) => ({
-  50: '#0a0a0a',
-  100: '#111111',
-  200: '#1c1c1c',
-});
-
-const themeLight = (colors: DefaultColors) => ({
-  50: '#fcfcf9',
-  100: '#f3f3ee',
-  200: '#e8e8e3',
-});
-
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -22,31 +10,35 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
-      borderColor: ({ colors }) => {
-        return {
-          light: themeLight(colors),
-          dark: themeDark(colors),
-        };
+      colors: {
+        // Dark mode colors (dark purple theme)
+        'dark-primary': '#0a0a0a',        // Deep black background
+        'dark-secondary': '#1a0d2e',      // Dark purple-black
+        'dark-tertiary': '#2d1b4e',       // Medium purple-black
+        'dark-accent': '#4f46e5',         // Primary purple accent
+        'dark-100': '#1a0d2e',
+        'dark-200': '#2d1b4e',
+        'dark-300': '#3730a3',
+        
+        // Light mode colors (light purple theme)
+        'light-primary': '#ffffff',       // Pure white background
+        'light-secondary': '#f3f1ff',     // Very light purple tint
+        'light-tertiary': '#e9e5ff',      // Light purple wash
+        'light-accent': '#7c3aed',        // Purple accent for light mode
+        'light-100': '#fafafa',
+        'light-200': '#ddd6fe',
+        'light-300': '#c4b5fd',
       },
-      colors: ({ colors }) => {
-        const colorsDark = themeDark(colors);
-        const colorsLight = themeLight(colors);
-
-        return {
-          dark: {
-            primary: colorsDark[50],
-            secondary: colorsDark[100],
-            ...colorsDark,
-          },
-          light: {
-            primary: colorsLight[50],
-            secondary: colorsLight[100],
-            ...colorsLight,
-          },
-        };
+      backgroundImage: {
+        // Gradient backgrounds for both themes
+        'gradient-dark': 'linear-gradient(135deg, #0a0a0a 0%, #1a0d2e 25%, #2d1b4e 50%, #1a0d2e 75%, #0a0a0a 100%)',
+        'gradient-light': 'linear-gradient(135deg, #ffffff 0%, #f3f1ff 25%, #e9e5ff 50%, #f3f1ff 75%, #ffffff 100%)',
+        'gradient-purple-dark': 'linear-gradient(45deg, #0a0a0a, #1a0d2e, #2d1b4e)',
+        'gradient-purple-light': 'linear-gradient(45deg, #ffffff, #f3f1ff, #e9e5ff)',
       },
     },
   },
   plugins: [require('@tailwindcss/typography')],
 };
+
 export default config;

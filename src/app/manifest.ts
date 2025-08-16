@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       'Perplexica is an AI powered chatbot that is connected to the internet.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#0a0a0a',
-    theme_color: '#0a0a0a',
+    background_color: '#f3f1ff', // Light purple for light mode
+    theme_color: '#4f46e5',      // Primary purple
     screenshots: [
       {
         src: '/screenshots/p1.png',
